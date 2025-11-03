@@ -20,7 +20,7 @@ const faqs = [
   },
 ];
 
-function FAQItem({ q, a }: { q: string; a: string }) {
+function FAQItem({ q, a }) {
   const [open, setOpen] = useState(false);
   return (
     <div className="rounded-2xl border border-white/10 bg-[#0B1330]/60">
