@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import HeaderNav from './components/HeaderNav.jsx';
+import Footer from './components/Footer.jsx';
 import HomePage from './components/HomePage.jsx';
 import ServicesPage from './components/ServicesPage.jsx';
 import PenetrationTestingPage from './components/PenetrationTestingPage.jsx';
@@ -20,23 +21,26 @@ function App() {
   return (
     <div className="min-h-screen scroll-smooth bg-[#0A0F24] font-sans">
       <HeaderNav />
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="services" element={<ServicesPage />} />
-        <Route path="services/penetration-testing" element={<PenetrationTestingPage />} />
-        <Route path="services/web-applications" element={<WebApplicationsPage />} />
-        <Route path="services/mobile-applications" element={<MobileApplicationsPage />} />
-        <Route path="services/infrastructure" element={<InfrastructurePage />} />
-        <Route path="services/cloud-security" element={<CloudSecurityPage />} />
-        <Route path="services/security-monitoring" element={<SecurityMonitoringPage />} />
-        <Route path="compliance" element={<CompliancePage />} />
-        <Route path="compliance/soc2" element={<SOC2Page />} />
-        <Route path="compliance/iso27001" element={<ISO27001Page />} />
-        <Route path="nex" element={<NexPage />} />
-        <Route path="about" element={<AboutPage />} />
-        <Route path="contact" element={<ContactPage />} />
-        <Route path="blog" element={<BlogPage />} />
-      </Routes>
+      <main className="pt-16">{/* offset for fixed header */}
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="services" element={<ServicesPage />} />
+          <Route path="services/penetration-testing" element={<PenetrationTestingPage />} />
+          <Route path="services/web-applications" element={<WebApplicationsPage />} />
+          <Route path="services/mobile-applications" element={<MobileApplicationsPage />} />
+          <Route path="services/infrastructure" element={<InfrastructurePage />} />
+          <Route path="services/cloud-security" element={<CloudSecurityPage />} />
+          <Route path="services/security-monitoring" element={<SecurityMonitoringPage />} />
+          <Route path="compliance" element={<CompliancePage />} />
+          <Route path="compliance/soc2" element={<SOC2Page />} />
+          <Route path="compliance/iso27001" element={<ISO27001Page />} />
+          <Route path="nex" element={<NexPage />} />
+          <Route path="about" element={<AboutPage />} />
+          <Route path="contact" element={<ContactPage />} />
+          <Route path="blog" element={<BlogPage />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }

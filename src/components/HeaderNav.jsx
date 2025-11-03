@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { Menu, X, Shield, ChevronDown } from 'lucide-react';
+import { Menu, X, Shield, ChevronDown, ChevronRight } from 'lucide-react';
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -13,10 +13,10 @@ const navItems = [
       { label: 'Mobile Applications', to: '/services/mobile-applications' },
       { label: 'Infrastructure', to: '/services/infrastructure' },
       { label: 'Cloud Security', to: '/services/cloud-security' },
-      { label: 'Compliance', to: '/compliance' },
+      { label: 'Security Monitoring', to: '/services/security-monitoring' },
+      { label: 'Compliance (Overview)', to: '/compliance' },
       { label: 'SOC 2', to: '/compliance/soc2' },
       { label: 'ISO 27001', to: '/compliance/iso27001' },
-      { label: 'Security Monitoring', to: '/services/security-monitoring' },
     ],
   },
   { label: 'Product – Nex', to: '/nex' },
@@ -55,15 +55,16 @@ export default function HeaderNav() {
                       <ChevronDown className="h-4 w-4" />
                     </NavLink>
                     {servicesOpen && (
-                      <div className="absolute mt-3 w-64 rounded-xl border border-white/10 bg-[#0C1430]/95 shadow-xl">
-                        <ul className="py-2">
+                      <div className="absolute mt-3 w-80 rounded-xl border border-white/10 bg-[#0C1430]/95 shadow-xl">
+                        <ul className="py-2 grid grid-cols-1">
                           {item.children.map((child) => (
                             <li key={child.label}>
                               <NavLink
                                 to={child.to}
-                                className={({ isActive }) => `block px-3 py-2 text-sm rounded-lg ${isActive ? 'text-cyan-200 bg-white/5' : 'text-blue-100/90 hover:text-cyan-200 hover:bg-white/5'}`}
+                                className={({ isActive }) => `flex items-center justify-between px-3 py-2 text-sm rounded-lg ${isActive ? 'text-cyan-200 bg-white/5' : 'text-blue-100/90 hover:text-cyan-200 hover:bg-white/5'}`}
                               >
-                                {child.label}
+                                <span>{child.label}</span>
+                                <ChevronRight className="h-4 w-4 opacity-60" />
                               </NavLink>
                             </li>
                           ))}
@@ -104,13 +105,35 @@ export default function HeaderNav() {
             <ul className="space-y-2">
               {navItems.map((item) => (
                 <li key={item.label}>
-                  <NavLink
-                    to={item.to}
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) => `block rounded-lg px-3 py-2 ${isActive ? 'text-cyan-200 bg-white/5' : 'text-blue-100/90 hover:text-cyan-200 hover:bg-white/5'}`}
-                  >
-                    {item.label}
-                  </NavLink>
+                  {item.children ? (
+                    <details className="group rounded-lg">
+                      <summary className="flex cursor-pointer list-none items-center justify-between rounded-lg px-3 py-2 text-blue-100/90 hover:bg-white/5">
+                        <span>{item.label}</span>
+                        <ChevronDown className="h-4 w-4 transition group-open:rotate-180" />
+                      </summary>
+                      <ul className="mt-1 space-y-1 pl-3">
+                        {item.children.map((child) => (
+                          <li key={child.label}>
+                            <NavLink
+                              to={child.to}
+                              onClick={() => setOpen(false)}
+                              className={({ isActive }) => `block rounded-md px-3 py-2 text-sm ${isActive ? 'text-cyan-200 bg-white/5' : 'text-blue-100/90 hover:text-cyan-200 hover:bg-white/5'}`}
+                            >
+                              {child.label}
+                            </NavLink>
+                          </li>
+                        ))}
+                      </ul>
+                    </details>
+                  ) : (
+                    <NavLink
+                      to={item.to}
+                      onClick={() => setOpen(false)}
+                      className={({ isActive }) => `block rounded-lg px-3 py-2 ${isActive ? 'text-cyan-200 bg-white/5' : 'text-blue-100/90 hover:text-cyan-200 hover:bg-white/5'}`}
+                    >
+                      {item.label}
+                    </NavLink>
+                  )}
                 </li>
               ))}
             </ul>

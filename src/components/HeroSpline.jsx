@@ -1,5 +1,6 @@
 import Spline from '@splinetool/react-spline';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function HeroSpline() {
   return (
@@ -20,7 +21,7 @@ export default function HeroSpline() {
           transition={{ duration: 0.8 }}
           className="space-y-6"
         >
-          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg[#0C1430]/60 px-4 py-1.5 text-xs font-medium text-cyan-300 backdrop-blur">
+          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-400/30 bg-[#0C1430]/60 px-4 py-1.5 text-xs font-medium text-cyan-300 backdrop-blur">
             Next‑Gen Cybersecurity
           </span>
           <h1 className="text-3xl font-semibold leading-tight text-blue-50 sm:text-5xl md:text-6xl">
@@ -31,13 +32,19 @@ export default function HeroSpline() {
             futuristic approach to protecting what matters most.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="#services"
+            <Link
+              to="/services"
               className="group relative overflow-hidden rounded-full px-6 py-3 text-sm font-semibold text-[#0A0F24]"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 transition-transform group-hover:scale-105" />
               <span className="relative">Explore Services</span>
-            </a>
+            </Link>
+            <Link
+              to="/nex"
+              className="rounded-full border border-white/10 bg-white/5 px-6 py-3 text-sm font-semibold text-blue-50 hover:bg-white/10"
+            >
+              Learn about Nex
+            </Link>
           </div>
         </motion.div>
       </div>

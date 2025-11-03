@@ -1,5 +1,7 @@
 import HeroSpline from './HeroSpline';
 import HighlightsSections from './HighlightsSections';
+import TestimonialsAlt from './TestimonialsAlt';
+import FAQSection from './FAQSection';
 import { motion } from 'framer-motion';
 
 const testimonials = [
@@ -19,10 +21,11 @@ const testimonials = [
 
 export default function HomePage() {
   return (
-    <main>
+    <div>
       <HeroSpline />
       <HighlightsSections />
 
+      {/* Secondary testimonials section */}
       <section className="relative bg-[#0A0F24] py-20 text-blue-50">
         <div className="mx-auto max-w-7xl px-4">
           <div className="mx-auto max-w-3xl text-center">
@@ -46,6 +49,12 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </main>
+
+      {/* Alternate testimonials grid */}
+      <TestimonialsAlt />
+
+      {/* FAQs */}
+      <FAQSection />
+    </div>
   );
 }
