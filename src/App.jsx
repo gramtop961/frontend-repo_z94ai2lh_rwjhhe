@@ -1,43 +1,42 @@
+import { Routes, Route } from 'react-router-dom';
 import HeaderNav from './components/HeaderNav.jsx';
-import HeroSpline from './components/HeroSpline.jsx';
-import HighlightsSections from './components/HighlightsSections.jsx';
-import BlogContactSection from './components/BlogContactSection.jsx';
+import HomePage from './components/HomePage.jsx';
+import ServicesPage from './components/ServicesPage.jsx';
+import PenetrationTestingPage from './components/PenetrationTestingPage.jsx';
+import CompliancePage from './components/CompliancePage.jsx';
+import SOC2Page from './components/SOC2Page.jsx';
+import ISO27001Page from './components/ISO27001Page.jsx';
+import NexPage from './components/NexPage.jsx';
+import AboutPage from './components/AboutPage.jsx';
+import ContactPage from './components/ContactPage.jsx';
+import BlogPage from './components/BlogPage.jsx';
+import WebApplicationsPage from './components/WebApplicationsPage.jsx';
+import MobileApplicationsPage from './components/MobileApplicationsPage.jsx';
+import InfrastructurePage from './components/InfrastructurePage.jsx';
+import CloudSecurityPage from './components/CloudSecurityPage.jsx';
+import SecurityMonitoringPage from './components/SecurityMonitoringPage.jsx';
 
 function App() {
   return (
     <div className="min-h-screen scroll-smooth bg-[#0A0F24] font-sans">
       <HeaderNav />
-      <main>
-        <HeroSpline />
-        <HighlightsSections />
-        <section id="about" className="relative bg-[#0A0F24] py-20 text-blue-50">
-          <div className="mx-auto max-w-7xl px-4">
-            <div className="mx-auto max-w-3xl text-center">
-              <h2 className="text-3xl font-semibold sm:text-4xl">About Nexyra</h2>
-              <p className="mt-3 text-blue-200/80">
-                We are a team of offensive security engineers and blue‑team operators building a safer
-                digital future. Our mission is simple: relentlessly reduce risk for modern
-                enterprises with precision, transparency, and speed.
-              </p>
-            </div>
-            <div className="mt-10 grid gap-6 md:grid-cols-3">
-              <div className="rounded-2xl border border-white/10 bg-[#0B1330]/60 p-6 text-center">
-                <div className="mx-auto h-2 w-24 rounded bg-cyan-400/40" />
-                <p className="mt-3 text-sm text-blue-200/80">CREST/OSCP/OSWE certified engineers</p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-[#0B1330]/60 p-6 text-center">
-                <div className="mx-auto h-2 w-24 rounded bg-cyan-400/40" />
-                <p className="mt-3 text-sm text-blue-200/80">Partners across cloud and DevSecOps ecosystems</p>
-              </div>
-              <div className="rounded-2xl border border-white/10 bg-[#0B1330]/60 p-6 text-center">
-                <div className="mx-auto h-2 w-24 rounded bg-cyan-400/40" />
-                <p className="mt-3 text-sm text-blue-200/80">Global delivery with 24/7 support</p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <BlogContactSection />
-      </main>
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route path="services" element={<ServicesPage />} />
+        <Route path="services/penetration-testing" element={<PenetrationTestingPage />} />
+        <Route path="services/web-applications" element={<WebApplicationsPage />} />
+        <Route path="services/mobile-applications" element={<MobileApplicationsPage />} />
+        <Route path="services/infrastructure" element={<InfrastructurePage />} />
+        <Route path="services/cloud-security" element={<CloudSecurityPage />} />
+        <Route path="services/security-monitoring" element={<SecurityMonitoringPage />} />
+        <Route path="compliance" element={<CompliancePage />} />
+        <Route path="compliance/soc2" element={<SOC2Page />} />
+        <Route path="compliance/iso27001" element={<ISO27001Page />} />
+        <Route path="nex" element={<NexPage />} />
+        <Route path="about" element={<AboutPage />} />
+        <Route path="contact" element={<ContactPage />} />
+        <Route path="blog" element={<BlogPage />} />
+      </Routes>
     </div>
   );
 }

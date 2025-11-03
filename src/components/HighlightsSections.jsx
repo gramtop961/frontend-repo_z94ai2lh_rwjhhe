@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Shield, Smartphone, Cloud, Server, Network, Lock, ArrowRight, Building2, Hospital, Factory, GraduationCap, Landmark, Cpu } from 'lucide-react';
+import { Shield, Smartphone, Cloud, Server, Network, Lock, ArrowRight, Building2, Hospital, Factory, GraduationCap, Landmark, Cpu, Star } from 'lucide-react';
 
 const services = [
   { title: 'AI‑Driven Penetration Testing', icon: Shield, desc: 'Smarter, adaptive testing powered by machine learning to uncover complex attack paths.' },
@@ -11,12 +11,27 @@ const services = [
 ];
 
 const industries = [
-  { label: 'Finance', icon: Building2 },
-  { label: 'Healthcare', icon: Hospital },
-  { label: 'Manufacturing', icon: Factory },
-  { label: 'Education', icon: GraduationCap },
-  { label: 'Government', icon: Landmark },
-  { label: 'Technology', icon: Cpu },
+  { label: 'Finance', icon: Building2, desc: 'Payment security, fraud prevention, and high‑availability operations.' },
+  { label: 'Healthcare', icon: Hospital, desc: 'HIPAA‑aligned testing and medical device security expertise.' },
+  { label: 'Manufacturing', icon: Factory, desc: 'OT/ICS security and plant‑floor segmentation hardening.' },
+  { label: 'Education', icon: GraduationCap, desc: 'Protecting student data and campus networks at scale.' },
+  { label: 'Government', icon: Landmark, desc: 'Critical infrastructure and regulatory‑driven controls.' },
+  { label: 'Technology', icon: Cpu, desc: 'Secure SDLC, DevSecOps, and cloud‑native resilience.' },
+];
+
+const testimonials = [
+  {
+    quote: 'Nexyra delivered the most thorough assessment we\'ve had — findings were actionable and mapped to business risk.',
+    author: 'CTO, FinTech Unicorn',
+  },
+  {
+    quote: 'Their red team simulated real adversaries and uncovered gaps our tools missed. Our detection matured overnight.',
+    author: 'Head of Security Operations, Global Retail',
+  },
+  {
+    quote: 'From SOC 2 scoping to evidence collection, the process was painless and fast. Exactly what we needed.',
+    author: 'VP Engineering, SaaS Platform',
+  },
 ];
 
 export default function HighlightsSections() {
@@ -92,68 +107,46 @@ export default function HighlightsSections() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="flex items-center gap-3 rounded-2xl border border-white/10 bg-[#0B1330]/60 p-5"
+                className="rounded-2xl border border-white/10 bg-[#0B1330]/60 p-5"
               >
-                <ind.icon className="h-6 w-6 text-cyan-300" />
-                <span className="text-blue-100">{ind.label}</span>
+                <div className="flex items-center gap-3">
+                  <ind.icon className="h-6 w-6 text-cyan-300" />
+                  <span className="text-blue-100 font-medium">{ind.label}</span>
+                </div>
+                <p className="mt-2 text-sm text-blue-200/80">{ind.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Nex Product */}
-      <section id="nex" className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(14,165,233,0.15),transparent_55%)]" />
-        <div className="relative mx-auto max-w-7xl px-4 py-16 sm:py-24">
-          <div className="grid items-center gap-10 md:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-semibold sm:text-4xl">Nex — Automated Web App Vulnerability Scanner</h2>
-              <p className="mt-4 text-blue-200/80">
-                Real‑time detection, AI‑assisted remediation, and seamless CI/CD integrations.
-                Nex amplifies your team with continuous, intelligent coverage.
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3 text-sm text-cyan-200">
-                <span className="rounded-full border border-cyan-300/40 px-3 py-1">Real‑time Vulnerability Detection</span>
-                <span className="rounded-full border border-cyan-300/40 px-3 py-1">AI Remediation</span>
-                <span className="rounded-full border border-cyan-300/40 px-3 py-1">CI/CD Integration</span>
-              </div>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#contact" className="group relative overflow-hidden rounded-full px-6 py-3 text-sm font-semibold text-[#0A0F24]">
-                  <span className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-sky-500 to-blue-600 transition-transform group-hover:scale-105" />
-                  <span className="relative">Book a Demo</span>
-                </a>
-                <a href="#blog" className="rounded-full border border-cyan-300/40 px-6 py-3 text-sm font-semibold text-cyan-200 hover:border-cyan-300 hover:bg-cyan-300/10">Learn More</a>
-              </div>
-            </div>
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <div className="rounded-2xl border border-white/10 bg-gradient-to-br from-[#0B1330] to-[#0F1C3D] p-4 shadow-2xl">
-                <div className="aspect-[16/10] w-full overflow-hidden rounded-xl border border-white/10 bg-[#0D1736]">
-                  {/* Dashboard mock */}
-                  <div className="h-full w-full p-4">
-                    <div className="mb-3 flex items-center justify-between">
-                      <div className="h-2 w-24 rounded bg-cyan-400/40" />
-                      <div className="h-2 w-10 rounded bg-cyan-400/20" />
-                    </div>
-                    <div className="grid grid-cols-3 gap-3">
-                      {Array.from({ length: 6 }).map((_, i) => (
-                        <div key={i} className="rounded-lg border border-white/10 bg-[#0B1330] p-3">
-                          <div className="h-2 w-20 rounded bg-cyan-400/30" />
-                          <div className="mt-2 h-16 rounded bg-gradient-to-br from-cyan-400/10 to-blue-500/10" />
-                        </div>
-                      ))}
-                    </div>
-                  </div>
+      {/* Testimonials */}
+      <section className="relative border-t border-white/10 bg-gradient-to-b from-[#0B1330] to-[#0A0F24]">
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            <h2 className="text-2xl font-semibold sm:text-3xl">What Our Clients Say</h2>
+            <p className="mt-3 text-blue-200/80">Outcomes that speak for themselves.</p>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {testimonials.map((t, idx) => (
+              <motion.div
+                key={t.author}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.05 }}
+                className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0C1430]/60 p-6"
+              >
+                <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-cyan-400/10 blur-3xl" />
+                <div className="mb-3 flex items-center gap-1 text-cyan-300">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-cyan-300/30 text-cyan-300/70" />
+                  ))}
                 </div>
-              </div>
-              <div className="pointer-events-none absolute -inset-8 -z-[0] bg-[radial-gradient(ellipse_at_center,rgba(34,211,238,0.2),transparent_60%)]" />
-            </motion.div>
+                <p className="text-blue-100">“{t.quote}”</p>
+                <p className="mt-4 text-sm text-blue-200/80">{t.author}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
